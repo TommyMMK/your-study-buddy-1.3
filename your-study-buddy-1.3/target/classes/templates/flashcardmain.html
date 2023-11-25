@@ -72,13 +72,13 @@
     .sidebar .paper-link {
       cursor: pointer;
       display: block;
-      padding: 20px 20px 20px 20px;
+      padding: 20px 20px 20px 10px;
       background-color: #ffffff00;
       border: none;
       margin-top: 50px;
       position: fixed;
       top: 65px;
-      left: 20px;
+      left: 10px;
       /* Updated property */
       z-index: 2;
       text-decoration: underline;
@@ -215,14 +215,15 @@
 <body>
 
   <ul>
-    <li><a class="active" href="flashcardmain.html">FlashCard</a></li>
-    <li><a href="StudyRoomMain.html">Study Room</a></li>
-    <li><a href="Dashboard.html">Dashboard</a></li>
+    <li><a th:href="@{flashcard}">FlashCard</a></li>
+    <li><a th:href="@{studyroom}">Study Room</a></li>
+    <li><a th:href="@{dashboard}">Dashboard</a></li>
   </ul>
 
   <div class="pull-down-button" onclick="toggleCurtain()">TODO</div>
   <div class="sidebar">
-    <button class="paper-link" onclick="createNewRoom()">Create New FlashCard</button>
+   <!-- <button class="paper-link" onclick="createNewRoom()">Create New FlashCard</button> --> 
+    <a class="paper-link" href="/add-flashcard/">Create New FlashCard</a>
     <div class="curtain" id="toDoCurtain">
       <br>
       <button onclick="addTask()">Add</button>

@@ -13,7 +13,7 @@
     }
 
     ul {
-      /* nav bar */
+      /*nav bar*/
       list-style-type: none;
       margin: 0;
       padding: 0;
@@ -45,7 +45,7 @@
     }
 
     .sidebar {
-      /* side bar */
+      /*side bar*/
       height: 100%;
       width: 200px;
       position: fixed;
@@ -72,7 +72,7 @@
     .sidebar .paper-link {
       cursor: pointer;
       display: block;
-      padding: 20px 20px 20px 20px;
+      padding: 20px 20px 20px 10px;
       background-color: #ffffff00;
       border: none;
       margin-top: 50px;
@@ -95,11 +95,9 @@
       position: fixed;
       top: 48px;
       left: 0;
-
       size: fixed;
       width: 200px;
       height: 0;
-
       background-color: #CED9FF;
       border-radius: 10px;
       overflow: hidden;
@@ -136,8 +134,81 @@
       background-color: #00000000;
     }
 
+   .center-container {
+    text-align: center;
+    background: linear-gradient(to bottom, #A0B9FA, #00000000);
+    padding: 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    height: 400px;
+    cursor: pointer;
+}
+
+.center-container .content-hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+    .center-container-caption {
+      text-align: center;
+      background-color: #A0B9FA;
+      padding: 30px;
+      border-radius: 40px;
+      position: fixed;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0; /* Changed from 1 to 0 */
+      height: 10px; /* Adjusted the height */
+      width: 360px; /* Adjusted the width */
+      box-sizing: border-box;
+    }
+    
+    .center-container-caption h2 {
+  margin: 0; /* Remove default margin to avoid extra spacing */
+  line-height: 0; /* Set line-height to 1 to align text to the top */
+}
+
+.next-button {
+      position: fixed;
+      top: 90%;
+      right: 400px;
+      z-index: 1;
+      background-color: #A0B9FA;
+      color: rgb(0, 0, 0);
+      padding: 10px 38px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+	.next-button:hover {
+      background-color: #A0B9FA;
+    }
+		.previous-button {
+      position: fixed;
+      top: 90%;
+      left: 400px;
+      z-index: 1;
+      background-color: #A0B9FA;
+      color: rgb(0, 0, 0);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+	.previous-button:hover {
+      background-color: #A0B9FA;
+    }
+
     .task-container {
-      /* TODO dropdown note */
+      /*TODO dropdown note*/
       margin-top: 10px;
       margin-bottom: 0px;
       font-family: Tahoma;
@@ -145,7 +216,7 @@
     }
 
     button {
-      /* add and delete button */
+      /*add and delete button*/
       background-color: #ffffff4d;
       color: rgb(0, 0, 0);
       padding: 5px 10px;
@@ -158,117 +229,56 @@
     button:hover {
       background-color: #A0B9FA;
     }
-
-    .folder-container {
-      margin-top: 10px;
-      size: fixed;
-      padding: 20px; /* Adjusted padding */
-      margin-right: 10px;
-      background-color: #CED9FF;
-      border-radius: 5px;
-      display: inline-block;
-      cursor: pointer;
-      width: 550px; /* Set the desired width */
-      height: 200px; /* Set the desired height */
-      text-align: center;
-      line-height: 1.5;
-      position: relative;
-    }
-
-    .folder-container:hover {
-      background-color: #A0B9FA;
-    }
-
-    .delete-button {
-      position: absolute;
-      bottom: 0;
-      right: 0px;
-      background-color: #ffffff66;
-      color: #000000;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .delete-button:hover {
-      background-color: #ff33339b;
-    }
-
-    /* Add styling for input fields and labels */
-    .folder-input {
-      width: 500px;
-      size: fixed;
-      padding: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-
-    .folder-label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    .create-button {
-      background-color: #A0B9FA;
-      color: rgb(0, 0, 0);
-      position: fixed;
-      bottom: 10%;
-      right: 100px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .create-button:hover {
-      background-color: #ffffff;
-    }
-
-    .back-button {
-      background-color: #A0B9FA;
-      color: rgb(0, 0, 0);
-      position: fixed;
-      bottom: 10%;
-      left: 20px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .back-button:hover {
-      background-color: #ffffff;
-    }
   </style>
 </head>
 
 <body>
 
   <ul>
-    <li><a class="active" href="flashcardmain.html">FlashCard</a></li>
-    <li><a href="StudyRoomMain.html">Study Room</a></li>
-    <li><a href="Dashboard.html">Dashboard</a></li>
+    <li><a th:href="@{flashcard}">FlashCard</a></li>
+    <li><a th:href="@{studyroom}">Study Room</a></li>
+    <li><a th:href="@{dashboard}">Dashboard</a></li>
   </ul>
 
   <div class="pull-down-button" onclick="toggleCurtain()">TODO</div>
   <div class="sidebar">
-    <button class="paper-link" onclick="createNewRoom()">Create New FlashCard</button>
+    <!-- <a class="paper-link" href="/add-flashcard/">Create New FlashCard</a> -->
     <div class="curtain" id="toDoCurtain">
       <br>
       <button onclick="addTask()">Add</button>
       <button onclick="deleteTask()">Delete</button>
     </div>
     <div class="pull-down-button" onclick="toggleCurtain()">TODO</div>
-    <button class="create-button" onclick="saveData()">Create</button>
-    <button class="back-button" onclick="goBack()">Back</button>
   </div>
   <div class="main" id="mainContent">
-
   </div>
+
+	 <div class="center-container" onclick="toggleContent()">
+    <h2 id="subjectTitle">Name of the subject</h2>
+    <p id="subjectContent" class="content-hidden">This is the content inside 	the centered container.</p>
+	</div>
+
+  <div class="center-container-caption" onclick="editFlashcardTitle()"> 
+    <h2 id="flashcardTitle">Flashcard 1</h2>
+  </div>
+	
+    <div class="next-button" onclick="nextButtonClick()">Next</div>
+    <div class="previous-button" onclick="previousButtonClick()">Previous</div>  
+   <!--<form  th:action="@{/flashcards}" th:object="${newflashcard}" method="post">
+      <div class="center-container">
+        <label for="name">Title:</label>
+        <input type="text" id="name" th:field="*{name}" required><br>
+        <label for="id">Front label:</label>
+        <input type="text" id="frontlabel" th:field="*{frontlabel}" required><br>
+        <label for="id">Back label:</label>
+        <input type="text" id="backlabel" th:field="*{backlabel}" required><br>
+      </div>
+    </form>
+  <div class="center-container-caption"> 
+    <h2 id="flashcardTitle">Flashcard 1</h2>
+  </div>
+  <button type="submit">Save flashcard</button> --> 
+
 
   <script>
     var curtainOpen = false;
@@ -307,30 +317,26 @@
       });
     }
 
-    function createNewRoom() {
-      var newFolder = document.createElement("div");
-      newFolder.className = "folder-container";
-      newFolder.innerHTML = '<label class="folder-label">Title:</label>';
-      newFolder.innerHTML += '<input class="folder-input" type="text" placeholder="Enter title"><br>';
-      newFolder.innerHTML += '<label class="folder-label">Note:</label>';
-      newFolder.innerHTML += '<input class="folder-input" type="text" placeholder="Enter note"><br>';
-      newFolder.innerHTML += '<button class="delete-button" onclick="deleteFolder(this)">Delete</button>';
-      document.getElementById('mainContent').appendChild(newFolder);
-    }
-
-    function deleteFolder(button) {
-      button.parentNode.remove();
+    function editFlashcardTitle() {
+      var newTitle = prompt("Enter the new title for Flashcard 1:");
+      if (newTitle) {
+        document.getElementById('flashcardTitle').innerText = newTitle;
+      }
     }
     
-    function saveData() {
-      // Implement your data saving logic here
-      alert('Data saved!');
+    function toggleContent() {
+    var content = document.getElementById('subjectContent');
+    content.classList.toggle('content-hidden');
+}
+	function nextButtonClick() {
+      // Add functionality for the "Next" button here
+      alert("Next button clicked!");
+    }
+    function previousButtonClick() {
+      // Add functionality for the "Previous" button here
+      alert("Previous button clicked!");
     }
 
-    function goBack() {
-      // Go back to the previous webpage
-      window.history.back();
-    }
   </script>
 
 </body>

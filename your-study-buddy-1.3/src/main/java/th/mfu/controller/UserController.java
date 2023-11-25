@@ -15,6 +15,10 @@ public class UserController {
     @Autowired
     UserRepository userrepo;
 
+    public UserController(UserRepository userrepo) {
+        this.userrepo = userrepo;
+    }
+
     @GetMapping("/home")
     public String HomePage(){
         return "home";
