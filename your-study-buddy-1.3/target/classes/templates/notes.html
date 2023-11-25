@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Notes Page</title>
+</head>
+
+<body>
+
+    <h2>Added Notes</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Text</th>
+            </tr>
+        </thead>
+        <tbody th:each="note : ${notes}">
+            <tr>
+                <td th:text="${note.name} ?: 'N/A'">Name</td>
+                <td th:text="${note.text} ?: 'N/A'">Text</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <h2>Create a Note</h2>
+    <a th:href="@{add-notes}">Add note</a>
+    <!-- <form th:action="@{/save-notes}" method="post" th:object="${note}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" required />
+
+        <br />
+
+        <label for="text">Note Text:</label>
+        <textarea id="text" name="text" th:field="*{text}" required></textarea>
+
+        <br />
+
+        <button type="submit">Save Note</button>
+    </form> -->
+
+
+
+
+</body>
+
+</html>
