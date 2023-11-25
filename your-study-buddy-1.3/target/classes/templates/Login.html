@@ -132,7 +132,7 @@
 <body>
     <header>
         <h1></h1>
-        <a class="help-button" href="Help.html">Help</a>
+        <a class="help-button" th:href="@{help}">Help</a>
     </header>
 
     <div class="login-container">
@@ -152,7 +152,7 @@
 
                 <button type="submit" class="btn">Sign in</button>
                 <br>
-                <a href="Help.html">Forgot password?</a><br>
+                <a th:href="@{help}">Forgot password?</a><br>
 
             </div>
     </div>

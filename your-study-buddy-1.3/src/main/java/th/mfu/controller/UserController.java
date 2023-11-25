@@ -16,8 +16,13 @@ public class UserController {
     UserRepository userrepo;
 
     @GetMapping("/home")
-    public String showHometPage(Model model) {
+    public String HomePage(){
         return "home";
+    }
+
+    @GetMapping("/help")
+    public String HelpPage(){
+        return "Help";
     }
 
     // to create buyer account
@@ -33,7 +38,7 @@ public class UserController {
         userrepo.save(user);
         Iterable<User> userlist = userrepo.findAll();
         model.addAttribute("user", userlist);
-        return "Login";
+        return "home";
     }
 
     // to show buyer login form
