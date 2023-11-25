@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+
+  <style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("images/sky4.jpg");
+    background-size: cover; /* or background-size: 100%; */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #A0B9FA;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    li {
+      float: right;
+    }
+
+    li b {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #A0B9FA;
+      text-decoration: underline;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 200px;
+      position: fixed;
+      z-index: 3;
+      top: 46px;
+      left: 0;
+      background-color: #f1f1f184;
+      overflow-y: auto;
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 11px;
+      color: #000;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      color: #A0B9FA;
+    }
+
+    .sidebar .paper-link {
+      display: block;
+      padding: 90px 80px 100px 50px;
+      background-color: #fff;
+      border: 2px solid #ccc;
+      margin-bottom: 10px;
+      text-decoration: underline;
+      color: #333;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar .paper-link:hover {
+      background-color: #eee;
+    }
+
+    .curtain {
+      position: fixed;
+      top: 48px;
+      right: 0;
+      size: fixed;
+      width: 200px;
+      height: 0;
+      background-color: #CED9FF;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.5s;
+      z-index: 2;
+      padding: 17px;
+      box-sizing: border-box;
+    }
+
+    .pull-down-button {
+      cursor: pointer;
+      position: fixed;
+      color: #000000;
+      top: 65px;
+      right: 70px; /* Updated property */
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 0px;
+      padding: 10 10px;
+    }
+
+    .main {
+      margin-top: 100px;
+      margin-left: 220px;
+      padding: 60px 20px 20px;
+      padding-bottom: 200px;
+      background-color: #eeeeee00;
+    }
+
+    #calendar {
+      background-color: #ffffff;
+      border: 2px solid #a0b9faa4;
+      border-radius: 10px;
+      margin-right: 0px;
+    }
+    .checkbox-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checkbox-list label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* Add styles for buttons */
+    button { /*add and delete button*/
+      background-color: #ffffff4d;
+      color: rgb(0, 0, 0);
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 6px;
+    }
+
+    button:hover {
+      background-color: #A0B9FA;
+    }
+
+    .task-container {
+      margin-top: 15px;
+      margin-bottom: 0px;
+      font-size: 13px;
+      font-family: Tahoma; /* Replace 'Your Desired Font' with the actual font you want to use */
+      color: #000000; /* Replace #333 with the desired text color */
+    }
+
+    /* Add your custom styles for reminders here */
+    .reminder {
+      background-color: #A0B9FA; /* Use your preferred color */
+      color: #000;
+      padding: 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul>
+    <li><a class="active" href="flashcardmain.html">FlashCard</a></li>
+    <li><a href="StudyRoomMain.html">Study Room</a></li>
+    <li><a href="Dashboard.html">Dashboard</a></li>
+  </ul>
+
+  <div class="sidebar">
+    <a href="#" class="paper-link">Resent Study Room</a>
+    <a href="#" class="paper-link">Resent Study Room</a>
+    <a href="#" class="paper-link">Resent Study Room</a>
+  </div>
+
+  <div class="curtain" id="toDoCurtain">
+    <br>
+    <button onclick="addTask()">Add</button>
+    <button onclick="deleteTask()">Delete</button>
+  </div>
+
+  <div class="pull-down-button" onclick="toggleCurtain()">TODO</div>
+
+  <div class="main">
+    <div id="calendar"></div>
+  </div>
+
+  <script>
+    var curtainOpen = false;
+
+    function toggleCurtain() {
+      var curtain = document.getElementById('toDoCurtain');
+      var curtainHeight = curtain.scrollHeight;
+
+      if (curtainOpen) {
+        curtain.style.height = '0';
+      } else {
+        curtain.style.height = curtainHeight + 'px';
+      }
+
+      curtainOpen = !curtainOpen;
+    }
+
+    function addTask() {
+      var taskName = prompt("Enter the task name:");
+      if (taskName) {
+        var newTaskContainer = document.createElement("div");
+        newTaskContainer.className = "task-container";
+        newTaskContainer.innerHTML = '<b><label><input type="checkbox" name="task" value="' + taskName + '"> ' + taskName + '</label></b>';
+        document.getElementById('toDoCurtain').appendChild(newTaskContainer);
+
+        // Close the curtain after adding a new task
+        curtainOpen = false;
+        toggleCurtain();
+      }
+    }
+
+    function deleteTask() {
+      var checkboxes = document.querySelectorAll('input[name="task"]:checked');
+      checkboxes.forEach(function (checkbox) {
+        checkbox.parentNode.parentNode.remove();
+      });
+    }
+
+    var events = [];
+
+    $(document).ready(function () {
+      $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: ''
+        },
+        events: events,
+        editable: true,
+        eventClick: function (event, jsEvent, view) {
+          if (event.className && event.className.includes('reminder')) {
+            var confirmDelete = confirm('Are you sure you want to delete this reminder?');
+            if (confirmDelete) {
+              $('#calendar').fullCalendar('removeEvents', event._id);
+            }
+          }
+        },
+        dayClick: function (date, jsEvent, view) {
+          var reminderText = prompt('Enter your reminder for ' + date.format('MMMM D, YYYY') + ':');
+          if (reminderText) {
+            $('#calendar').fullCalendar('renderEvent', {
+              title: reminderText,
+              start: date,
+              allDay: true,
+              className: 'reminder'
+            }, true);
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

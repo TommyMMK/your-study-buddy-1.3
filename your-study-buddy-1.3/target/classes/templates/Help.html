@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Page</title>
+    <style>
+        body {
+            font-family: 'Market Square Regular', Bold;
+            background-image: url("images/sky4.jpg");
+            background-repeat: no-repeat;
+            background-size: 120%;
+            background-position: center center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #A0B9FA;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 60px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            height: 500px;
+            text-align: center;
+            margin: 60px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Add the watermark image */
+            background-image: url("images/LOGO.png");    
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+            
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #A0B9FA;
+        }
+        .login-container h3 {
+            margin-top: 60px;
+            color: #000000;
+            font-size: 12px;
+        }
+        .back-button {
+      background-color: #A0B9FA;
+      color: rgb(0, 0, 0);
+      position: fixed;
+      bottom: 10%;
+      left: 20px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background-color: #ffffff;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1></h1>
+    </header>
+ 
+    <div class="login-container">
+        <h2>Your Study Buddy</h2>
+        <h3>Dear User <br>
+            Thank you for reaching out to our support team. <br>
+            Your inquiry is important to us. Our team is dedicated to providing timely assistance.<br> <br>   
+            If you require immediate assistance, please feel free to contact us at the following phone number: 0923377538.<br><br>         
+            For email correspondence, please reach out to us at: 6531503177@lamduan.mfu.ac.th.<br>          
+            Our team will make every effort to respond to your inquiry as soon as possible.<br> <br>          
+            Best Regards,<br>
+            Your Study Buddy Team</h3> 
+    </div>
+    <button class="back-button" onclick="history.back()">Back</button>
+</body>
+</html>

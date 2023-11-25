@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("images/sky4.jpg");
+      background-size: 120%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    ul {
+      /*nav bar*/
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #A0B9FA;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    li {
+      /* 3functions position */
+      float: right;
+    }
+
+    li a {
+      /* 3functions */
+      display: block;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #A0B9FA;
+      text-decoration: underline;
+    }
+
+    .sidebar {
+      /*side bar*/
+      height: 100%;
+      width: 200px;
+      position: fixed;
+      z-index: 3;
+      top: 46px;
+      left: 0;
+      background-color: #f1f1f184;
+      overflow-y: auto;
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #000;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      color: #A0B9FA;
+    }
+
+    .sidebar .paper-link {
+      cursor: pointer;
+      display: block;
+      padding: 20px 20px 20px 20px;
+      background-color: #ffffff00;
+      border: none;
+      margin-top: 50px;
+      position: fixed;
+      top: 65px;
+      left: 20px;
+      /* Updated property */
+      z-index: 2;
+      text-decoration: underline;
+      color: #000000;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar .paper-link:hover {
+      background-color: #ffffff00;
+      text-decoration: underline;
+    }
+
+    .curtain {
+      position: fixed;
+      top: 48px;
+      left: 0;
+      size: fixed;
+      width: 200px;
+      height: 0;
+      background-color: #CED9FF;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.5s;
+      z-index: 2;
+      padding: 17px;
+      box-sizing: border-box;
+    }
+
+    .pull-down-button {
+      cursor: pointer;
+      position: fixed;
+      color: #000000;
+      top: 65px;
+      left: 70px;
+      /* Updated property */
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 0px;
+      padding: 10 10px;
+    }
+
+    .pull-down-button:hover {
+      background-color: #A0B9FA;
+    }
+
+    .main {
+      margin-top: 100px;
+      margin-left: 220px;
+      padding: 60px 20px 20px;
+      padding-bottom: 200px;
+      background-color: #00000000;
+    }
+
+   .center-container {
+    text-align: center;
+    background: linear-gradient(to bottom, #A0B9FA, #00000000);
+    padding: 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    height: 400px;
+    cursor: pointer;
+}
+
+.center-container .content-hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+    .center-container-caption {
+      text-align: center;
+      background-color: #A0B9FA;
+      padding: 30px;
+      border-radius: 40px;
+      position: fixed;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0; /* Changed from 1 to 0 */
+      height: 10px; /* Adjusted the height */
+      width: 360px; /* Adjusted the width */
+      box-sizing: border-box;
+    }
+    
+    .center-container-caption h2 {
+  margin: 0; /* Remove default margin to avoid extra spacing */
+  line-height: 0; /* Set line-height to 1 to align text to the top */
+}
+
+.next-button {
+      position: fixed;
+      top: 90%;
+      right: 400px;
+      z-index: 1;
+      background-color: #A0B9FA;
+      color: rgb(0, 0, 0);
+      padding: 10px 38px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+	.next-button:hover {
+      background-color: #A0B9FA;
+    }
+		.previous-button {
+      position: fixed;
+      top: 90%;
+      left: 400px;
+      z-index: 1;
+      background-color: #A0B9FA;
+      color: rgb(0, 0, 0);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+	.previous-button:hover {
+      background-color: #A0B9FA;
+    }
+
+    .task-container {
+      /*TODO dropdown note*/
+      margin-top: 10px;
+      margin-bottom: 0px;
+      font-family: Tahoma;
+      color: #000000;
+    }
+
+    button {
+      /*add and delete button*/
+      background-color: #ffffff4d;
+      color: rgb(0, 0, 0);
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 6px;
+    }
+
+    button:hover {
+      background-color: #A0B9FA;
+    }
+  </style>
+</head>
+
+<body>
+
+    <ul>
+        <li><a class="active" href="flashcardmain.html">FlashCard</a></li>
+        <li><a href="StudyRoomMain.html">Study Room</a></li>
+        <li><a href="Dashboard.html">Dashboard</a></li>
+      </ul>
+  <div class="pull-down-button" onclick="toggleCurtain()">TODO</div>
+  <div class="sidebar">
+    <button class="paper-link" onclick="createNewRoom()">Create New Flashcard </button>
+    <div class="curtain" id="toDoCurtain">
+      <br>
+      <button onclick="addTask()">Add</button>
+      <button onclick="deleteTask()">Delete</button>
+    </div>
+    <div class="pull-down-button" onclick="toggleCurtain()">TODO</div>
+  </div>
+  <div class="main" id="mainContent">
+  </div>
+
+	<div class="center-container" onclick="toggleContent()">
+    <h2 id="subjectTitle">Name of the subject</h2>
+    <p id="subjectContent" class="content-hidden">This is the content inside 	the centered container.</p>
+	</div>
+
+  <div class="center-container-caption" onclick="editFlashcardTitle()">
+    <!-- Your content goes here -->
+    <h2 id="flashcardTitle">Flashcard 1</h2>
+  </div>
+	
+    <div class="next-button" onclick="nextButtonClick()">Next</div>
+    <div class="previous-button" onclick="previousButtonClick()">Previous</div>
+  <script>
+    var curtainOpen = false;
+
+    function toggleCurtain() {
+      var curtain = document.getElementById('toDoCurtain');
+      var curtainHeight = curtain.scrollHeight;
+
+      if (curtainOpen) {
+        curtain.style.height = '0';
+      } else {
+        curtain.style.height = curtainHeight + 'px';
+      }
+
+      curtainOpen = !curtainOpen;
+    }
+
+    function addTask() {
+      var taskName = prompt("Enter the task name:");
+      if (taskName) {
+        var newTaskContainer = document.createElement("div");
+        newTaskContainer.className = "task-container";
+        newTaskContainer.innerHTML = '<b><label><input type="checkbox" name="task" value="' + taskName + '"> ' + taskName + '</label></b>';
+        document.getElementById('toDoCurtain').appendChild(newTaskContainer);
+
+        // Close the curtain after adding a new task
+        curtainOpen = false;
+        toggleCurtain();
+      }
+    }
+
+    function deleteTask() {
+      var checkboxes = document.querySelectorAll('input[name="task"]:checked');
+      checkboxes.forEach(function (checkbox) {
+        checkbox.parentNode.parentNode.remove();
+      });
+    }
+
+    function editFlashcardTitle() {
+      var newTitle = prompt("Enter the new title for Flashcard 1:");
+      if (newTitle) {
+        document.getElementById('flashcardTitle').innerText = newTitle;
+      }
+    }
+    
+    function toggleContent() {
+    var content = document.getElementById('subjectContent');
+    content.classList.toggle('content-hidden');
+}
+	function nextButtonClick() {
+      // Add functionality for the "Next" button here
+      alert("Next button clicked!");
+    }
+    function previousButtonClick() {
+      // Add functionality for the "Previous" button here
+      alert("Previous button clicked!");
+    }
+
+  </script>
+
+</body>
+
+</html>
