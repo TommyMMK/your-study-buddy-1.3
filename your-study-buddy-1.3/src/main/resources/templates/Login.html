@@ -6,47 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <style>
-   body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url("images/sky4.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("images/sky4.jpg");
+            background-size: cover;
+            /* or background-size: 100%; */
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
         header {
             background-color: #A0B9FA;
             color: #fff;
             padding: 15px;
             text-align: center;
-            position: relative;
         }
-        ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #A0B9FA;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-    }
-    li a {
-      display: block;
-      color: rgb(0, 0, 0);
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
 
-    li a:hover {
-      background-color: #A0B9FA;
-      text-decoration: underline;
-    }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #A0B9FA;
+            padding: 10px;
+        }
 
+        .login-form a {
+            color: #000000;
+            /* Black color for the link */
+            text-decoration: none;
+        }
 
 
         .login-container {
@@ -61,14 +49,14 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            /* Add the watermark image */
             background-image: url("images/LOGO.png");
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center center;
             position: relative;
-
+            /* Added position relative */
         }
-
 
         .login-container h2 {
             margin-bottom: 20px;
@@ -76,14 +64,9 @@
         }
 
         .login-form input {
-            position: absolute;
-            top: 36%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70%;
-            /* Adjusted width */
+            width: 100%;
             padding: 8px;
-            margin-bottom: 5px;
+            margin-bottom: 20px;
             box-sizing: border-box;
             border: none;
             border-bottom: 1px solid #000000;
@@ -93,51 +76,10 @@
             /* White text color */
             z-index: 1;
         }
-
-        .login-forms input {
-            position: absolute;
-            top: 46%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70%;
-            /* Adjusted width */
-            padding: 8px;
-            margin-bottom: 5px;
-            box-sizing: border-box;
-            border: none;
-            border-bottom: 1px solid #000000;
-            background-color: rgba(255, 0, 0, 0);
-            /* Red background color */
-            color: #000000;
-            /* White text color */
-            z-index: 1;
-        }
-
 
         .login-form button {
-            position: absolute;
-            top: 78%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
             background-color: #A0B9FA;
-            color: #000000;
-            padding: 10px 80px;
-            border: none;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            
-        }
-
-        .login-forms button {
-            position: absolute;
-            top: 86%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            background-color: #A0B9FA;
             color: #000000;
             padding: 10px 72px;
             border: none;
@@ -145,20 +87,29 @@
             margin-bottom: 20px;
             cursor: pointer;
             transition: background-color 0.3s;
-           
+
         }
 
-        .login-form button:hover,
-        .login-forms button:hover {
+        .login-form button:hover {
             background-color: #8197e6;
         }
 
-        .login-forms a {
-            color: #000000;
-            text-decoration: none;
+        .back-button {
+            background-color: #A0B9FA;
+            color: rgb(0, 0, 0);
+            position: fixed;
+            bottom: 10%;
+            left: 20px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        /* Help button styles */
+        .back-button:hover {
+            background-color: #ffffff;
+        }
+
         .help-button {
             position: absolute;
             top: 10px;
@@ -180,24 +131,32 @@
 
 <body>
     <header>
-        <h1></h1>    
+        <h1></h1>
         <a class="help-button" href="Help.html">Help</a>
     </header>
 
     <div class="login-container">
         <h2>Your Study Buddy</h2>
-        <form class="login-form" th:action="@{/login}" method="post">
-            <input type="text" placeholder="Username" required>
-       
-            <button type="submit">Login</button>
-        </form>   
-        <form class="login-forms ">
-            <input type="password" placeholder="Password" required>
-            <br>
-            <button href="signUp.html">Sign Up</button>          
-        </form>
-         <a href="Help.html">Forgot password?</a><br>
+
+        <form class="login-form" th:action="@{/login}" th:object="${user}" method="post">
+            <div class="container">
+
+                <div class="email">
+                    <input type="email" th:field="*{email}" placeholder="Email" required>
+                </div>
+
+
+                <div class="password">
+                    <input type="password" placeholder="Password" th:field="*{password}" required>
+                </div>
+
+                <button type="submit" class="btn">Sign in</button>
+                <br>
+                <a href="Help.html">Forgot password?</a><br>
+
+            </div>
     </div>
+    <button class="back-button" onclick="history.back()">Back</button>
 </body>
 
 </html>

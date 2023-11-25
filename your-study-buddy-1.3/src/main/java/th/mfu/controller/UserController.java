@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import th.mfu.domain.User;
+import th.mfu.repository.UserRepository;
 
 @Controller
 public class UserController {
@@ -23,7 +24,7 @@ public class UserController {
     @GetMapping("/signup")
     public String SingupForm(Model model) {
         model.addAttribute("user", new User());
-        return "signup";
+        return "signUp";
     }
 
     // to save buyer account
@@ -32,14 +33,14 @@ public class UserController {
         userrepo.save(user);
         Iterable<User> userlist = userrepo.findAll();
         model.addAttribute("user", userlist);
-        return "login";
+        return "Login";
     }
 
     // to show buyer login form
     @GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("user", new User());
-        return "login";
+        return "Login";
     }
 
     // to login for buyer
@@ -48,12 +49,12 @@ public class UserController {
         if (userrepo.existsByEmail(user.getEmail()) == true) {
             User existUser = userrepo.findByEmail(user.getEmail());
             if (user.getPassword().equals(existUser.getPassword())) {
-                return "dashboard";
+                return "Dashboard";
             } else {
-                return "login";
+                return "Login";
             }
         } else {
-            return "login";
+            return "Login";
         }
     }
 }
