@@ -27,9 +27,13 @@
         }
 
 
+
+
         li {
             float: right;
         }
+
+
 
 
         li a {
@@ -39,6 +43,8 @@
             padding: 14px 16px;
             text-decoration: none;
         }
+
+
 
 
         li a:hover {
@@ -73,24 +79,11 @@
         }
 
 
-        .sidebar a::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #111;
-            transform: scaleX(0); /* Initially hide the line */
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-in-out;
+        .sidebar a:hover {
+            text-decoration: underline;
         }
 
 
-        .sidebar a:hover::after {
-            transform: scaleX(1); /* Show the line on hover */
-            transform-origin: bottom left;
-        }
 
 
         .task-container {
@@ -100,6 +93,8 @@
             margin-bottom: 10px;
             border-radius: 5px;
         }
+
+
 
 
         #timerCurtain {
@@ -118,6 +113,8 @@
         }
 
 
+
+
         .pull-down-button {
             cursor: pointer;
             position: fixed;
@@ -133,6 +130,8 @@
             height: 40px;
             padding: 0 10px;
         }
+
+
 
 
         /* Input box style */
@@ -159,15 +158,19 @@
         }
 
 
+
+
         .video-frame iframe {
             width: 100%;
             height: 100%;
         }
 
 
+
+
         .main {
             margin-left: 15px;
-            margin-top: 46px; 
+            margin-top: 46px;
             padding-bottom: 100px;
             position: fixed;
             left: 50%;
@@ -188,10 +191,14 @@
         }
 
 
+
+
         .pdf-viewer {
             width: 100%; /* Make the PDF viewer fill its container */
             height: 100%; /* Make the PDF viewer fill its container */
         }
+
+
 
 
          /* Modal styles */
@@ -209,6 +216,8 @@
         }
 
 
+
+
         .modal-content {
             background-color: #CED9FF;
             margin: 5% auto;
@@ -220,16 +229,22 @@
         }
 
 
+
+
          /* Style for the file input in the modal */
          .modal-content input[type="file"] {
             margin-top: 10px;
         }
 
 
+
+
         /* Style for the file input in the modal */
         .modal-content input[type="file"] {
             margin-top: 10px;
         }
+
+
 
 
         /* Style for the buttons in the modal */
@@ -241,16 +256,22 @@
         }
 
 
+
+
         .modal-content button.save {
             background-color: #A0B9FA;
             color: black;
         }
 
 
+
+
         .modal-content button.discard {
             background-color: #FFFFFF;
             color:black;
         }
+
+
 
 
         .close {
@@ -261,6 +282,8 @@
         }
 
 
+
+
         .close:hover,
         .close:focus {
             color: black;
@@ -269,10 +292,14 @@
         }
 
 
+
+
         /* Style for the timer modal */
         #timerModal, #breakTimerModal, #noteModal {
             display: none;
         }
+
+
 
 
         #timerModalContent, #breakTimerModalContent, #noteModalContent {
@@ -285,10 +312,14 @@
         }
 
 
+
+
         #timerModalContent label, #breakTimerModalContent label, #noteModalContent label {
             display: block;
             margin-bottom: 10px;
         }
+
+
 
 
           /* Style for the note modal at the bottom */
@@ -304,20 +335,24 @@
         }
 
 
+
+
         #noteModalContent textarea {
             width: 80%;
             height: 50px;
             box-sizing: border-box;
             border-radius: 5px;
-          
+         
         }
+
+
 
 
         #noteModalContent button {
             margin-bottom: 0px;
             padding: 8px;
             border-radius: 4px;
-            cursor: pointer; 
+            cursor: pointer;
              z-index: 3;
         }
         .create-button {
@@ -332,9 +367,11 @@
       cursor: pointer;
     }
 
+
     .create-button:hover {
       background-color: #ffffff;
     }
+
 
     .back-button {
       background-color: #A0B9FA;
@@ -348,6 +385,7 @@
       cursor: pointer;
     }
 
+
     .back-button:hover {
       background-color: #ffffff;
     }
@@ -355,7 +393,11 @@
 </head>
 
 
+
+
 <body>
+
+
 
 
     <ul>
@@ -366,25 +408,31 @@
     </ul>
 
 
+
+
     <!-- Sidebar -->
     <div id="mySidebar" class="sidebar">
         <input id="fileInput" type="text" placeholder="Untitled" onblur="saveSidebarInput()">
         <a href="javascript:void(0);" onclick="openUploadModal()">Upload File</a>
         <a href="javascript:void(0);" onclick="openSongUploadModal()">Upload Song</a>
         <a href="javascript:void(0);" onclick="openTimerModal()">Set timer</a>
-        <a href="javascript:void(0);" onclick="toggleBreakCurtain()">Set breaktime</a>
+       
         <a href="javascript:void(0);" onclick="openNoteModal()">Take note</a>
         <button class="create-button" onclick="saveData()">Create</button>
     <button class="back-button" onclick="goBack()">Back</button>
     </div>
 
-    
+
+   
     <div id="timerCurtain">
        
          <p id="timerDisplay"></p>
-      
+     
     </div>
-    <div class="pull-down-button" onclick="toggleTimerCurtain()">Timers</div>
+    <div class="pull-down-button" onclick="toggleTimerCurtain()">Timer</div>
+
+
+
 
 
 
@@ -396,13 +444,15 @@
         <input id="centerInputBox" type="file" style="display: none;">
         <!-- Add the timerDisplay element for countdown -->
         <p id="timerDisplay"></p>
-        
+       
     </div>
    
     <!-- Video frame -->
     <div class="video-frame">
         <iframe id="videoFrame" width="300" height="200" frameborder="0" allowfullscreen></iframe>
     </div>
+
+
 
 
      <!-- Modal -->
@@ -420,6 +470,8 @@
     </div>
 
 
+
+
    <!-- Timer Modal -->
      <div id="timerModal" class="modal">
         <div id="timerModalContent" class="modal-content">
@@ -430,6 +482,8 @@
             <button class="discard" onclick="closeTimerModal()">Cancel</button>
         </div>
     </div>
+
+
 
 
 <!-- Song Upload Modal -->
@@ -455,41 +509,60 @@
     </div>
 
 
+
+
 <script>
   var timerCurtainOpen = false;
-        var intervals = [];
+var intervals = [];
 
-        function startTimer(duration) {
-            var timerDisplay = document.getElementById('timerDisplay');
-            var seconds = duration * 60;
+function startTimer(duration, updateCallback) {
+    var timerDisplay = document.getElementById('timerDisplay');
+    var seconds = duration * 60;
 
-            var timerInterval = setInterval(function () {
-                seconds--;
+    var timerInterval = setInterval(function () {
+        seconds--;
 
-                if (seconds < 0) {
-                    clearInterval(timerInterval);
-                    timerDisplay.innerText = 'Time\'s up!';
-                } else {
-                    var minutes = Math.floor(seconds / 60);
-                    var remainingSeconds = seconds % 60;
-                    var timeString = minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+        if (seconds < 0) {
+            clearInterval(timerInterval);
+            timerDisplay.innerText = 'Time\'s up!';
+        } else {
+            var minutes = Math.floor(seconds / 60);
+            var remainingSeconds = seconds % 60;
+            var timeString = minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
 
-                    timerDisplay.innerText = 'Timer: ' + timeString;
-                }
-            }, 1000);
+            timerDisplay.innerText = 'Timer: ' + timeString;
 
-            return timerInterval;
+            // Execute the callback to update the countdown display
+            if (updateCallback) {
+                updateCallback(seconds);
+            }
         }
-        function updateTimerDisplay() {
-            var timerCurtain = document.getElementById('timerCurtain');
-            var timerValue = document.getElementById('timerInput').value;
+    }, 1000);
 
-            if (timerValue > 0) {
-            // Update the timer display in the curtain
-            timerCurtain.innerHTML = 'Timer: ' + timerValue + ' mins';
-        }
-        }
-        function toggleTimerCurtain() {
+    return timerInterval;
+}
+
+function updateTimerDisplay() {
+    var timerCurtain = document.getElementById('timerCurtain');
+    var timerValue = document.getElementById('timerInput').value;
+
+    if (timerValue > 0) {
+        // Update the timer display in the curtain
+        timerCurtain.innerText = 'Timer: ' + timerValue + ' mins';
+    }
+}
+
+function updateCountdownDisplay(seconds) {
+    var timerCurtain = document.getElementById('timerCurtain');
+    var minutes = Math.floor(seconds / 60);
+    var remainingSeconds = seconds % 60;
+    var timeString = minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+
+    // Update the countdown display in the curtain
+    timerCurtain.innerText = 'Time remain: ' + timeString;
+}
+
+function toggleTimerCurtain() {
     var timerCurtain = document.getElementById('timerCurtain');
     var timerCurtainHeight = timerCurtain.scrollHeight;
 
@@ -497,30 +570,29 @@
         timerCurtain.style.height = '0';
         timerCurtain.style.opacity = '0';
     } else {
-        var timerValue = document.getElementById('timerInput').value;
-        timerCurtain.innerHTML = 'Timer: ' + timerValue + ' mins';
+        var timerValue = document.getElementById('timerInput').value;    
         timerCurtain.style.height = timerCurtainHeight + 'px';
         timerCurtain.style.opacity = '1';
     }
 
     timerCurtainOpen = !timerCurtainOpen;
 }
+
 function saveTimer() {
     updateTimerDisplay();
     var timerValue = document.getElementById('timerInput').value;
 
     if (timerValue > 0) {
         var timerCurtain = document.getElementById('timerCurtain');
-        var timerDisplay = document.getElementById('timerDisplay');
 
         // Update the timer display in the curtain
-        timerCurtain.innerHTML = 'Timer: ' + timerValue + ' mins';
+        timerCurtain.innerText = 'Timer: ' + timerValue + ' mins';
 
         // Clear any existing intervals
         clearIntervals();
 
         // Start the countdown and save the interval to clear it later
-        var timerInterval = startTimer(timerValue);
+        var timerInterval = startTimer(timerValue, updateCountdownDisplay);
         intervals.push(timerInterval);
         closeTimerModal();
     } else {
@@ -528,32 +600,34 @@ function saveTimer() {
     }
 }
 
+function startCountdown() {
+    var timerValue = document.getElementById('timerInput').value;
+    clearIntervals();
 
-        function startCountdown() {
-            var timerValue = document.getElementById('timerInput').value;
-            clearIntervals();
+    if (timerValue > 0) {
+        // Start the countdown with the updateCountdownDisplay callback
+        var timerInterval = startTimer(timerValue, updateCountdownDisplay);
 
-            if (timerValue > 0) {
-                var timerInterval = startTimer(timerValue);
+        // Save the interval to clear it later
+        intervals.push(timerInterval);
+    }
+}
 
-                // Save the interval to clear it later
-                intervals.push(timerInterval);
-            }
-        }
-
-        function clearIntervals() {
-            intervals.forEach(clearInterval);
-            intervals = [];
-        }
+function clearIntervals() {
+    intervals.forEach(clearInterval);
+    intervals = [];
+}
 
 
         function openTimerModal() {
             document.getElementById('timerModal').style.display = 'block';
         }
 
+
         function closeTimerModal() {
             document.getElementById('timerModal').style.display = 'none';
         }
+
 
        
         function openUploadModal() {
@@ -564,6 +638,8 @@ function saveTimer() {
             // Close the modal when the close button is clicked
             document.getElementById('uploadModal').style.display = 'none';
         }
+
+
 
 
      
@@ -589,6 +665,10 @@ function saveTimer() {
 
 
 
+
+
+
+
             // Append the PDF viewer to the main container
             mainContainer.innerHTML = ''; // Clear existing content
             mainContainer.appendChild(pdfViewer);
@@ -600,6 +680,7 @@ function saveTimer() {
 
 
 
+       
         // Close the modal after handling the file
         closeUploadModal();
     } else {
@@ -607,6 +688,10 @@ function saveTimer() {
         alert('Please select a file.');
     }
 }
+
+
+
+
 
 
 
@@ -619,10 +704,17 @@ function openSongUploadModal() {
 
 
 
+
+
+
+
 // Function to close song upload modal
 function closeSongUploadModal() {
     document.getElementById('songUploadModal').style.display = 'none';
 }
+
+
+
 
 
 
@@ -631,6 +723,7 @@ function saveUploadedSong() {
     // Get the values of the local song file and YouTube link
     var songFile = document.getElementById('songFileInput').files[0];
     var youtubeLink = document.getElementById('youtubeLinkInput').value;
+
 
     // Check if a local song file is selected
     if (songFile) {
@@ -646,19 +739,24 @@ function saveUploadedSong() {
     }
 }
 
+
 // Declare and initialize youtubeLink
 var youtubeLink = 'https://www.youtube.com/watch?v=mPZkdNFkNps&si=bji6Y5hpwAHkkJ79';
+
 
 // Set the source of the video frame to the YouTube link
 var videoFrame = document.getElementById('videoFrame');
 videoFrame.src = youtubeLink;
 
+
 // Show the video frame
 videoFrame.style.display = 'block';
+
 
 // Function to handle local song file
 function handleLocalSongFile(songFile) {
     var fileExtension = songFile.name.split('.').pop().toLowerCase();
+
 
     if (fileExtension === 'mp3' || fileExtension === 'mp4') {
         var audioPlayer = document.getElementById('audioPlayer');
@@ -670,6 +768,7 @@ function handleLocalSongFile(songFile) {
         alert('Unsupported file type. Please select an MP3 or MP4 file.');
     }
 }
+
 
 // Function to play a YouTube video
 function playVideo(videoLink) {
@@ -684,10 +783,15 @@ function playVideo(videoLink) {
 }
 
 
+
+
         function openNoteModal() {
             // Display the note modal at the bottom when the "Take note" link is clicked
             document.getElementById('noteModal').style.display = 'block';
         }
+
+
+
 
 
 
@@ -701,14 +805,21 @@ function playVideo(videoLink) {
 
 
 
+
+
+
         function closeNoteModal() {
             // Close the note modal when the close button is clicked
             document.getElementById('noteModal').style.display = 'none';
         }
 
 
+
+
         function saveSidebarInput() {
     var titleInput = document.getElementById('fileInput').value;
+
+
 
 
     // Add logic to save the input, for example, update a variable or perform an action
@@ -720,15 +831,24 @@ function saveData() {
       alert('Data saved!');
     }
 
+
     function goBack() {
       // Go back to the previous webpage
       window.history.back();
     }
 
+
     </script>
    
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
