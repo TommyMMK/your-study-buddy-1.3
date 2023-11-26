@@ -12,12 +12,12 @@ import th.mfu.domain.FlashCard;
 import th.mfu.repository.FlashCardRepository;
 
 @Controller
-public class FlashCareController {
+public class FlashCaredController {
     
     @Autowired
     FlashCardRepository flashcardRepo;
 
-    public FlashCareController(FlashCardRepository flashcardRepo) {
+    public FlashCaredController(FlashCardRepository flashcardRepo) {
         this.flashcardRepo = flashcardRepo;
     }
 

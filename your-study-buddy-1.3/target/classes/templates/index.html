@@ -1,14 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-</head>
-<body>
-    <h2>Home</h2>
-    <a th:href="@{login}">Login</a><br>
-    <a th:href="@{signup}">Signup</a><br>
+    <style>
+   body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("images/sky4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
+
+        header {
+            background-color: #A0B9FA;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+        ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #A0B9FA;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    li a {
+      display: block;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+
+    li a:hover {
+      background-color: #A0B9FA;
+      text-decoration: underline;
+    }
+
+
+
+        .login-container {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 60px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            height: 500px;
+            text-align: center;
+            margin: 60px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-image: url("images/LOGO.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+            position: relative;
+
+
+        }
+
+
+
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #A0B9FA;
+        }
+
+
+      
+        .login-form button {
+            position: absolute;
+            top: 78%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            background-color: #A0B9FA;
+            color: #000000;
+            padding: 10px 80px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+           
+        }
+
+
+        .login-forms button {
+            position: absolute;
+            top: 86%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            background-color: #A0B9FA;
+            color: #000000;
+            padding: 10px 72px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+           
+        }
+
+
+        .login-form button:hover,
+        .login-forms button:hover {
+            background-color: #8197e6;
+        }
+
+
+        .login-forms a {
+            color: #000000;
+            text-decoration: none;
+        }
+        
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1></h1>    
+        
+    </header>
+
+
+    <div class="login-container">
+        <h2>Your Study Buddy</h2>
+        <a class="login-form" th:href="@{/login}">
+            <button type="submit">Login</button>
+        </a>
+        <a class="login-forms" th:href="@{/signup}">
+            <br>
+            <button>Sign Up</button>
+        </a>
+        
+    </div>
 </body>
+
+
 </html>
