@@ -234,7 +234,7 @@
 
 <body>
 
-  <ul>
+  <!--<ul>
     <li><a th:href="@{flashcard}">FlashCard</a></li>
     <li><a th:href="@{studyroom}">Study Room</a></li>
     <li><a th:href="@{dashboard}">Dashboard</a></li>
@@ -242,7 +242,6 @@
 
   <div class="pull-down-button" onclick="toggleCurtain()">TODO</div>
   <div class="sidebar">
-    <!-- <a class="paper-link" href="/add-flashcard/">Create New FlashCard</a> -->
     <div class="curtain" id="toDoCurtain">
       <br>
       <button onclick="addTask()">Add</button>
@@ -263,22 +262,22 @@
   </div>
 	
     <div class="next-button" onclick="nextButtonClick()">Next</div>
-    <div class="previous-button" onclick="previousButtonClick()">Previous</div>  
-   <!--<form  th:action="@{/flashcards}" th:object="${newflashcard}" method="post">
-      <div class="center-container">
-        <label for="name">Title:</label>
-        <input type="text" id="name" th:field="*{name}" required><br>
-        <label for="id">Front label:</label>
-        <input type="text" id="frontlabel" th:field="*{frontlabel}" required><br>
-        <label for="id">Back label:</label>
-        <input type="text" id="backlabel" th:field="*{backlabel}" required><br>
-      </div>
-    </form>
-  <div class="center-container-caption"> 
-    <h2 id="flashcardTitle">Flashcard 1</h2>
-  </div>
-  <button type="submit">Save flashcard</button> --> 
+    <div class="previous-button" onclick="previousButtonClick()">Previous</div>   -->
 
+    <h2>Create Flash Card</h2>
+
+    <form action="/flashcards" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="frontLabel">Front Label:</label>
+        <textarea id="frontLabel" name="frontLabel" rows="4" required></textarea>
+        <br>
+        <label for="backLabel">Back Label:</label>
+        <textarea id="backLabel" name="backLabel" rows="4" required></textarea>
+        <br>
+        <button type="submit">Save Flash Card</button>
+    </form>
 
   <script>
     var curtainOpen = false;
