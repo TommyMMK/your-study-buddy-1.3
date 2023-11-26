@@ -18,6 +18,57 @@ public class FlashCard {
     private String frontLabel;
     private String backLabel;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @ManyToOne(cascade = CascadeType.MERGE)
     private User user;
 

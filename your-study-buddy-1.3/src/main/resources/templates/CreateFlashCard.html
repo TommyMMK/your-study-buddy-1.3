@@ -134,26 +134,27 @@
       background-color: #00000000;
     }
 
-   .center-container {
-    text-align: center;
-    background: linear-gradient(to bottom, #A0B9FA, #00000000);
-    padding: 20px;
-    border-radius: 10px;
-    position: fixed;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    height: 400px;
-    cursor: pointer;
-}
+    .center-container {
+      text-align: center;
+      background: linear-gradient(to bottom, #A0B9FA, #00000000);
+      padding: 20px;
+      border-radius: 10px;
+      position: fixed;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      height: 400px;
+      cursor: pointer;
+    }
 
-.center-container .content-hidden {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-}
+    .center-container .content-hidden {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
     .center-container-caption {
       text-align: center;
       background-color: #A0B9FA;
@@ -163,18 +164,23 @@
       top: 15%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 0; /* Changed from 1 to 0 */
-      height: 10px; /* Adjusted the height */
-      width: 360px; /* Adjusted the width */
+      z-index: 0;
+      /* Changed from 1 to 0 */
+      height: 10px;
+      /* Adjusted the height */
+      width: 360px;
+      /* Adjusted the width */
       box-sizing: border-box;
     }
-    
-    .center-container-caption h2 {
-  margin: 0; /* Remove default margin to avoid extra spacing */
-  line-height: 0; /* Set line-height to 1 to align text to the top */
-}
 
-.next-button {
+    .center-container-caption h2 {
+      margin: 0;
+      /* Remove default margin to avoid extra spacing */
+      line-height: 0;
+      /* Set line-height to 1 to align text to the top */
+    }
+
+    .next-button {
       position: fixed;
       top: 90%;
       right: 400px;
@@ -187,10 +193,12 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-	.next-button:hover {
+
+    .next-button:hover {
       background-color: #A0B9FA;
     }
-		.previous-button {
+
+    .previous-button {
       position: fixed;
       top: 90%;
       left: 400px;
@@ -203,7 +211,8 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-	.previous-button:hover {
+
+    .previous-button:hover {
       background-color: #A0B9FA;
     }
 
@@ -234,7 +243,7 @@
 
 <body>
 
-  <!--<ul>
+  <ul>
     <li><a th:href="@{flashcard}">FlashCard</a></li>
     <li><a th:href="@{studyroom}">Study Room</a></li>
     <li><a th:href="@{dashboard}">Dashboard</a></li>
@@ -252,19 +261,19 @@
   <div class="main" id="mainContent">
   </div>
 
-	 <div class="center-container" onclick="toggleContent()">
+  <div class="center-container" onclick="toggleContent()">
     <h2 id="subjectTitle">Name of the subject</h2>
-    <p id="subjectContent" class="content-hidden">This is the content inside 	the centered container.</p>
-	</div>
+    <p id="subjectContent" class="content-hidden">This is the content inside the centered container.</p>
+  </div>
 
-  <div class="center-container-caption" onclick="editFlashcardTitle()"> 
+  <div class="center-container-caption" onclick="editFlashcardTitle()">
     <h2 id="flashcardTitle">Flashcard 1</h2>
   </div>
-	
-    <div class="next-button" onclick="nextButtonClick()">Next</div>
-    <div class="previous-button" onclick="previousButtonClick()">Previous</div>   -->
 
-    <h2>Create Flash Card</h2>
+  <div class="next-button" onclick="nextButtonClick()">Next</div>
+  <div class="previous-button" onclick="previousButtonClick()">Previous</div>
+
+  <h2>Create Flash Card</h2>
 
     <form action="/flashcards" method="post">
         <label for="name">Name:</label>
@@ -322,12 +331,12 @@
         document.getElementById('flashcardTitle').innerText = newTitle;
       }
     }
-    
+
     function toggleContent() {
-    var content = document.getElementById('subjectContent');
-    content.classList.toggle('content-hidden');
-}
-	function nextButtonClick() {
+      var content = document.getElementById('subjectContent');
+      content.classList.toggle('content-hidden');
+    }
+    function nextButtonClick() {
       // Add functionality for the "Next" button here
       alert("Next button clicked!");
     }
