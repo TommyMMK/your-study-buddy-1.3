@@ -72,13 +72,13 @@
     .sidebar .paper-link {
       cursor: pointer;
       display: block;
-      padding: 20px 20px 20px 20px;
+      padding: 20px 20px 20px 10px;
       background-color: #ffffff00;
       border: none;
       margin-top: 50px;
       position: fixed;
       top: 65px;
-      left: 20px;
+      left: 10px;
       /* Updated property */
       z-index: 2;
       text-decoration: underline;
@@ -213,16 +213,16 @@
 </head>
 
 <body>
-
+<!--   
   <ul>
-    <li><a class="active" href="flashcardmain.html">FlashCard</a></li>
-    <li><a href="StudyRoomMain.html">Study Room</a></li>
-    <li><a href="Dashboard.html">Dashboard</a></li>
+    <li><a th:href="@{flashcard}">FlashCard</a></li>
+    <li><a th:href="@{studyroom}">Study Room</a></li>
+    <li><a th:href="@{dashboard}">Dashboard</a></li>
   </ul>
 
   <div class="pull-down-button" onclick="toggleCurtain()">TODO</div>
   <div class="sidebar">
-    <button class="paper-link" onclick="createNewRoom()">Create New FlashCard</button>
+    <a class="paper-link" href="/add-flashcard/">Create New FlashCard</a>
     <div class="curtain" id="toDoCurtain">
       <br>
       <button onclick="addTask()">Add</button>
@@ -233,7 +233,32 @@
   </div>
   <div class="main" id="mainContent">
 
-  </div>
+  </div> -->
+
+  <h2>Flash Cards List</h2>
+
+  <a href="/add-flashcard">Create a new Flash Card</a>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Front Label</th>
+        <th>Back Label</th>
+        <th>Action</th>
+    </tr>
+    <!-- Iterate over the list of flashcards and display each one -->
+    <th:block th:each="flashcard : ${flashcards}">
+        <tr>
+            <td th:text="${flashcard.name}"></td>
+            <td th:text="${flashcard.frontLabel}"></td>
+            <td th:text="${flashcard.backLabel}"></td>
+            <td>
+              <a th:href="@{'/edit-flashcard/' + ${flashcard.id}}">Edit</a>
+              <a th:href="@{'/delete-flashcard/' + ${flashcard.id}}">Delete</a>
+          </td>
+        </tr>
+    </th:block>
+</table>
 
   <script>
     var curtainOpen = false;
